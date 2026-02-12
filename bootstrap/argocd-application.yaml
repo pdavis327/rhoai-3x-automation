@@ -6,7 +6,6 @@ metadata:
 spec:
   project: default
   source:
-    # UPDATE: Set this to your Git repository URL
     repoURL: https://github.com/pdavis327/rhoai-3x-automation.git
     targetRevision: main
     path: manifests
@@ -27,4 +26,5 @@ spec:
     syncOptions:
       - CreateNamespace=false
       - ServerSideApply=true
+      - SkipDryRunOnMissingResource=true
       - RespectIgnoreDifferences=true
