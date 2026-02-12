@@ -2,7 +2,7 @@
 
 This repository uses **OpenShift GitOps (ArgoCD)** to declaratively deploy and configure **Red Hat OpenShift AI (RHOAI)** and all of its operator dependencies on a blank OpenShift cluster.
 
-Based on the [Hobbyist Guide to RHOAI](https://github.com/redhat-ai-services/hobbyist-guide-to-rhoai).
+Based on the [RHOAI Installation Workshop](https://github.com/redhat-ai-americas/rhoai-installation-workshop).
 
 ## What Gets Deployed
 
