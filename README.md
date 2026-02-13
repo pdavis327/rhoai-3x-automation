@@ -72,7 +72,7 @@ Based on the [RHOAI Installation Workshop](https://github.com/redhat-ai-americas
 
 Some steps are cluster-specific and cannot be fully automated via GitOps:
 
-1. **GPU MachineSet** - Create a GPU worker MachineSet for your cloud provider. See [Hobbyist Guide Step 2](https://github.com/redhat-ai-services/hobbyist-guide-to-rhoai/blob/main/docs/02-enable-gpu-support.md).
+1. **GPU MachineSet** - Create a GPU worker MachineSet for your cloud provider. See [RHOAI Installation Workshop Step 2](https://github.com/redhat-ai-americas/rhoai-installation-workshop/blob/main/docs/02-enable-gpu-support.md).
 
 2. **Hardware Profile** - Create a Hardware Profile in the RHOAI dashboard to enable GPU assignment to workloads:
    - RHOAI Dashboard -> Settings -> Hardware profiles -> Create hardware profile
@@ -80,7 +80,7 @@ Some steps are cluster-specific and cannot be fully automated via GitOps:
    - Add toleration: operator `Exists`, effect `NoSchedule`, key `nvidia.com/gpu`
    - See [RHOAI 3.2 Hardware Profiles docs](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.2/html/working_with_accelerators/working-with-hardware-profiles_accelerators)
 
-3. **GPU Node Taints** (optional) - Prevent non-GPU workloads from scheduling on GPU nodes. See [Hobbyist Guide Step 5](https://github.com/redhat-ai-services/hobbyist-guide-to-rhoai/blob/main/docs/05-configure-gpu-sharing-method.md).
+3. **GPU Node Taints** (optional) - Prevent non-GPU workloads from scheduling on GPU nodes. See [RHOAI Installation Workshop Step 5](https://github.com/redhat-ai-americas/rhoai-installation-workshop/blob/main/docs/05-configure-gpu-sharing-method.md).
 
 ## Sync Wave Architecture
 
