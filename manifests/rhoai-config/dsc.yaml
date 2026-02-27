@@ -21,16 +21,16 @@ spec:
       defaultLocalQueueName: default
       managementState: Removed
     llamastackoperator:
-      managementState: Removed
+      managementState: Managed
     modelregistry:
       managementState: Managed
       registriesNamespace: rhoai-model-registries
     ray:
       managementState: Managed
     trainingoperator:
-      managementState: Removed
+      managementState: Managed
     trustyai:
-      managementState: Removed
+      managementState: Managed
     workbenches:
       managementState: Managed
       workbenchNamespace: rhods-notebooks
