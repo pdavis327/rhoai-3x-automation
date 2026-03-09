@@ -23,7 +23,7 @@ echo ""
 # -------------------------------------------------------------------
 # Preflight checks
 # -------------------------------------------------------------------
-echo "[1/6] Preflight checks..."
+echo "[1/7] Preflight checks..."
 
 if ! command -v oc &> /dev/null; then
   echo "ERROR: oc CLI not found. Install it first."
@@ -49,7 +49,7 @@ echo ""
 # -------------------------------------------------------------------
 # Install OpenShift GitOps Operator
 # -------------------------------------------------------------------
-echo "[2/6] Installing OpenShift GitOps Operator..."
+echo "[2/7] Installing OpenShift GitOps Operator..."
 
 oc apply -f "${BOOTSTRAP_DIR}/openshift-gitops-subscription.yaml"
 echo "  Subscription created. Waiting for operator to install..."
@@ -58,7 +58,7 @@ echo ""
 # -------------------------------------------------------------------
 # Wait for GitOps operator to be ready
 # -------------------------------------------------------------------
-echo "[3/6] Waiting for OpenShift GitOps operator CSV to succeed..."
+echo "[3/7] Waiting for OpenShift GitOps operator CSV to succeed..."
 
 RETRIES=60
 DELAY=10
@@ -80,7 +80,7 @@ echo ""
 # -------------------------------------------------------------------
 # Wait for ArgoCD instance to be ready
 # -------------------------------------------------------------------
-echo "[4/6] Waiting for ArgoCD server to be ready..."
+echo "[4/7] Waiting for ArgoCD server to be ready..."
 
 RETRIES=60
 DELAY=10
@@ -102,16 +102,25 @@ echo ""
 # -------------------------------------------------------------------
 # Grant ArgoCD cluster-admin
 # -------------------------------------------------------------------
-echo "[5/6] Granting ArgoCD cluster-admin access..."
+echo "[5/7] Granting ArgoCD cluster-admin access..."
 
 oc apply -f "${BOOTSTRAP_DIR}/argocd-cluster-admin.yaml"
 echo "  ClusterRoleBinding created."
 echo ""
 
 # -------------------------------------------------------------------
+# Configure ArgoCD RBAC so all authenticated users can access the UI
+# -------------------------------------------------------------------
+echo "[6/7] Configuring ArgoCD RBAC..."
+
+oc apply -f "${BOOTSTRAP_DIR}/argocd-rbac.yaml"
+echo "  ArgoCD RBAC configured (defaultPolicy: role:admin)."
+echo ""
+
+# -------------------------------------------------------------------
 # Create the ArgoCD Application
 # -------------------------------------------------------------------
-echo "[6/6] Creating ArgoCD Application..."
+echo "[7/7] Creating ArgoCD Application..."
 
 # Check if the user has updated the repo URL
 if grep -q "YOURORG" "${BOOTSTRAP_DIR}/argocd-application.yaml"; then
